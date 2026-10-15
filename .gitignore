@@ -10,3 +10,7 @@ __pycache__/
 /outputs
 checkpoints/
 output_*/
+
+# DejaView local dependencies and generated artifacts
+/.claude/
+/eval_results/runs/

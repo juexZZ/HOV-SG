@@ -309,3 +309,8 @@ This work was funded by the German Research Foundation
 (DFG) Emmy Noether Program grant number 468878300, the
 BrainLinks-BrainTools Center of the University of Freiburg,
 and an academic grant from NVIDIA.
+
+
+## DejaView baseline adaptation
+
+See [the workflow and historical experiment contract](docs/dejaview_baseline.md).
