@@ -60,3 +60,66 @@ historical artifacts document the original machine.
 
 Model weights, maps, images, detections, compiled dependencies and full run
 logs are excluded. Keep upstream LICENSE and citation information.
+
+## Corrected workflow (after the legacy tag)
+
+Use a fresh `RUN_ID` for each experiment. Runners resolve repository-relative
+code and accept externally supplied absolute data paths. They refuse existing
+map outputs and result files; the evaluator's explicit `--overwrite` option
+is available for intentional JSON replacement. Current results go under
+`eval_results/runs/` and are ignored. Existing legacy result JSON is unchanged.
+
+Mapping records the exact command, source commit, tracked dirty state and
+success/failure in a run manifest. Evaluation records its arguments, revision,
+protocol-input SHA-256 hashes, and the map manifest if available. A missing
+manifest means map provenance is unknown. These records do not certify the
+contents of large geometry/checkpoint files: preserve their versions with
+the experiment. Do not change a checkout while a run is active.
+
+Set the paths below for your machine (absolute paths recommended):
+
+```bash
+export DATASET_ROOT=/path/to/Depth-Anything-3/metric_depth_results
+export ANNOTATION_ROOT=/path/to/metacam/rebuttal
+export OBJECT_LIST_ROOT=/path/to/DejaView/eval/object_test_lists
+export RUN_ID=pantry1_numeric_v1
+export GPU_ID=0
+```
+
+The loader and retriever pair color/depth/pose by exact numeric frame ID and
+reject missing or duplicate IDs. Mapping now samples and fuses in chronological
+numeric order. **Rebuild HOV-SG maps before evaluating this corrected workflow.**
+The default output subtree is `data/scene_graphs/current/$RUN_ID`, separate
+from historical scene maps.
+
+```bash
+./run.sh pantry1
+CHAPTER_ID=1 ./run_evaluator.sh pantry1
+DATASET_NAME=pantry1 ./run_query.sh remote
+python application/split_chapter_data.py \
+  --data_dir "$DATASET_ROOT/28_metfloor" \
+  --annotation_file /path/to/28_metfloor/stream_annotations.json \
+  --mode prefix --out_parent /path/to/new/splits --symlink
+```
+
+Set `SKIP_FRAMES` (default 10), `SAVE_ROOT`, `CLIP_CKPT`, `SAM_CKPT` and
+`PYTHON` as needed. Query/evaluation additionally accept `SCENE_DIR`,
+`DATA_DIR`, `OUTPUT_PATH`, `CONTRIBUTOR_TOP_T`; the query accepts `TOP_K`.
+The evaluator CLI exposes visibility parameters. This remains the original
+multiple-template text retrieval and geometric visibility method. Text tokens
+now follow the model device instead of forcing CUDA.
+
+Splits retain only materialized frame IDs in their mapping, preserve padded
+source filenames, and reject an existing destination to prevent stale frames.
+Single-traversal `--mode each` is supported. The query's `--no_depth_check`
+counts only in-image points. Invalid evaluation chapters fail explicitly.
+
+Validation: `python -m unittest discover -s tests -p test_dejaview_baseline.py -v`
+checks the actual loader's sampling order, mismatched/duplicate frame IDs,
+visibility, missing/padded split frames, single-traversal splitting, CPU text
+features, output preservation and run provenance.
+
+Both the shell syntax and new/modified Python syntax were checked. Tests run
+in the existing baseline environments. No full GPU mapping, accuracy rerun,
+or browser rendering validation was performed. The headless backend change
+is a fallback at import time, not a guarantee for every GUI configuration.

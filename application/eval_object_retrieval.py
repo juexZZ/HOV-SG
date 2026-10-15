@@ -35,6 +35,7 @@ import open3d as o3d
 import open_clip
 from PIL import Image
 from tqdm import tqdm
+from hovsg.utils.baseline_io import frame_triplets, save_result, provenance
 
 from hovsg.utils.clip_utils import get_text_feats_multiple_templates
 from hovsg.utils.constants import CLIP_DIM
@@ -167,7 +168,7 @@ class HovsgRetriever:
         self.depth_scale = depth_scale
         self.depth_tol = depth_tol
 
-        self.mask_feats = torch.load(os.path.join(scene_dir, "mask_feats.pt")).float()
+        self.mask_feats = torch.load(os.path.join(scene_dir, "mask_feats.pt"), map_location="cpu").float()
         self.mask_feats = torch.nn.functional.normalize(self.mask_feats, p=2, dim=-1).cpu().numpy()
 
         self.feat_dim = CLIP_DIM[clip_type]
@@ -176,10 +177,8 @@ class HovsgRetriever:
         )
         self.model.eval()
 
-        self.color_files = sorted(glob.glob(os.path.join(data_dir, "color/*.jpg")), key=numeric_stem)
-        self.pose_files = sorted(glob.glob(os.path.join(data_dir, "pose/*.txt")), key=numeric_stem)
-        self.depth_files = sorted(glob.glob(os.path.join(data_dir, "depth/*.png")), key=numeric_stem)
-        assert len(self.color_files) == len(self.pose_files) == len(self.depth_files), "frame count mismatch"
+        triples = frame_triplets(data_dir)
+        self.color_files, self.depth_files, self.pose_files = map(list, zip(*triples))
 
         self.K = load_intrinsics(os.path.join(data_dir, "intrinsic/intrinsic_depth.txt"))
         H, W = np.array(Image.open(self.depth_files[0])).shape[:2]
@@ -297,7 +296,9 @@ class ObjectEvaluator:
         hit_any_count = miss_any_count = 0
         hit_primary_count = miss_primary_count = 0
         ghost_count = 0
-        chapter_ann = self.chapters.annotation_by_chapter.get(chapter_id, {})
+        if chapter_id not in self.chapters.annotation_by_chapter:
+            raise ValueError(f"Unknown chapter {chapter_id}")
+        chapter_ann = self.chapters.annotation_by_chapter[chapter_id]
         n_gt_in_chapter = sum(1 for files in chapter_ann.values() if files)
 
         for query in tqdm(object_list, desc=f"chapter {chapter_id}"):
@@ -372,6 +373,8 @@ class ObjectEvaluator:
                 "vox_size": self.retriever.vox_size,
                 "min_visible": self.retriever.min_visible,
                 "depth_tol": self.retriever.depth_tol,
+                "depth_scale": self.retriever.depth_scale,
+                "frame_selection": "latest_geometrically_visible",
             },
         }
 
@@ -401,7 +404,10 @@ def main():
     p.add_argument("--min_visible", type=int, default=20)
     p.add_argument("--depth_tol", type=float, default=0.5)
     p.add_argument("--depth_scale", type=float, default=1000.0)
+    p.add_argument("--overwrite", action="store_true", help="Allow replacing an existing result JSON")
     args = p.parse_args()
+    if Path(args.output_path).exists() and not args.overwrite:
+        p.error(f"Output already exists: {args.output_path}; choose a new path or --overwrite")
 
     mapping_path = args.mapping or os.path.join(args.data_dir, "filename_mapping.json")
     retriever = HovsgRetriever(
@@ -430,9 +436,13 @@ def main():
         print(f"{k}: {v}")
     print("*******************************************************")
 
-    os.makedirs(os.path.dirname(args.output_path), exist_ok=True)
-    with open(args.output_path, "w") as f:
-        json.dump(results, f, indent=2)
+    results["meta"]["provenance"] = provenance(
+        Path(__file__).resolve().parents[1], args,
+        [args.object_list_txt, Path(args.dataset_dir) / "stream_annotations.json", mapping_path],
+    )
+    map_manifest = Path(args.scene_dir) / "run_manifest.json"
+    results["meta"]["map_run"] = json.loads(map_manifest.read_text()) if map_manifest.is_file() else None
+    save_result(args.output_path, results, overwrite=args.overwrite)
 
 
 if __name__ == "__main__":

@@ -95,14 +95,18 @@ def _filtered_mapping_entries(mapping_path: Path, kept: set[int]) -> list[dict]:
     raise ValueError("unsupported filename_mapping format")
 
 
-def _index_to_ext(folder: Path) -> dict[int, str]:
-    out: dict[int, str] = {}
+def _index_to_ext(folder: Path) -> dict[int, Path]:
+    out = {}
     for p in folder.iterdir():
-        if p.is_file():
-            try:
-                out[int(p.stem)] = p.suffix
-            except ValueError:
-                pass
+        if not p.is_file():
+            continue
+        try:
+            index = int(p.stem)
+        except ValueError:
+            continue
+        if index in out:
+            raise ValueError(f"duplicate frame ID {index} in {folder}")
+        out[index] = p
     return out
 
 
@@ -119,12 +123,15 @@ def _copy_split(
     src_dir: Path, dst_dir: Path, kept: set[int],
     mapping_entries: list[dict], symlink: bool,
 ) -> tuple[int, int]:
+    if dst_dir.exists():
+        raise FileExistsError(f"Refusing to mix a split with an existing directory: {dst_dir}")
     for sub in ("color", "depth", "pose", "intrinsic"):
         (dst_dir / sub).mkdir(parents=True, exist_ok=True)
     color_exts = _index_to_ext(src_dir / "color")
     depth_exts = _index_to_ext(src_dir / "depth")
     pose_exts = _index_to_ext(src_dir / "pose")
     copied, missing = 0, 0
+    materialized = set()
     for idx in sorted(kept):
         triplet = [
             ("color", color_exts.get(idx)),
@@ -135,15 +142,16 @@ def _copy_split(
             missing += 1
             continue
         for sub, ext in triplet:
-            _materialize(src_dir / sub / f"{idx}{ext}", dst_dir / sub / f"{idx}{ext}", symlink)
+            _materialize(ext, dst_dir / sub / ext.name, symlink)
         copied += 1
+        materialized.add(idx)
     intrinsic_src = src_dir / "intrinsic"
     if intrinsic_src.is_dir():
         for p in intrinsic_src.iterdir():
             if p.is_file():
                 _materialize(p, dst_dir / "intrinsic" / p.name, symlink)
     with (dst_dir / "filename_mapping.json").open("w", encoding="utf-8") as f:
-        json.dump(mapping_entries, f, indent=2)
+        json.dump([e for e in mapping_entries if int(e["index"]) in materialized], f, indent=2)
     return copied, missing
 
 
@@ -158,7 +166,7 @@ def split_traversals(
 
     ranges = _traversal_ranges(left_images)
     print(f"detected {len(ranges)} traversal(s) in annotation")
-    if len(ranges) <= 1:
+    if len(ranges) <= 1 and mode == "prefix":
         print("only one traversal — no prefix splits to create")
         return
 

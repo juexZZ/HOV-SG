@@ -150,7 +150,7 @@ def get_text_feats(in_text, clip_model, clip_feat_dim, batch_size=64):
     :return: the text features
     """
     # in_text = ["a {} in the scene.".format(in_text)]
-    text_tokens = open_clip.tokenize(in_text).cuda()
+    text_tokens = open_clip.tokenize(in_text).to(next(clip_model.parameters()).device)
     text_id = 0
     text_feats = np.zeros((len(in_text), clip_feat_dim), dtype=np.float32)
     while text_id < len(text_tokens):  # Batched inference.

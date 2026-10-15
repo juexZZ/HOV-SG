@@ -6,6 +6,7 @@ import torchvision
 import open3d as o3d
 
 from hovsg.dataloader.generic import RGBDDataset
+from hovsg.utils.baseline_io import frame_triplets
 
 
 class ScannetDataset(RGBDDataset):
@@ -60,20 +61,8 @@ class ScannetDataset(RGBDDataset):
         Returns:
             List of RGB-D data samples (RGB image path, depth image path).
         """
-        rgb_data_list = []
-        depth_data_list = []
-        pose_data_list = []
-        color_dir = os.path.join(self.root_dir, "color")
-        depth_dir = os.path.join(self.root_dir, "depth")
-        pose_dir = os.path.join(self.root_dir, "pose")
-        rgb_data_list = [os.path.join(color_dir, x) for x in os.listdir(color_dir)]
-        depth_data_list = [os.path.join(depth_dir, x) for x in os.listdir(depth_dir)]
-        pose_data_list = [os.path.join(pose_dir, x) for x in os.listdir(pose_dir)]
-        # sort the data list
-        rgb_data_list.sort()
-        depth_data_list.sort()
-        pose_data_list.sort()
-        return list(zip(rgb_data_list, depth_data_list, pose_data_list))
+        return frame_triplets(self.root_dir)
+
         
     
     def _get_test_data_list(self):

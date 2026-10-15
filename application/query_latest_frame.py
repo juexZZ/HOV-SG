@@ -20,6 +20,7 @@ import open3d as o3d
 import open_clip
 from PIL import Image
 from tqdm import tqdm
+from hovsg.utils.baseline_io import frame_triplets
 
 from hovsg.utils.clip_utils import get_text_feats_multiple_templates
 from hovsg.utils.constants import CLIP_DIM
@@ -68,7 +69,7 @@ def visibility_count(points_world, pose_c2w, K, H, W, depth=None, depth_scale=10
         d = depth[v, u].astype(np.float32) / depth_scale
         valid = (d > 0) & (np.abs(d - z) < tol)
         return int(valid.sum())
-    return int(inb.shape[0])
+    return int(inb.sum())
 
 
 def main():
@@ -87,7 +88,7 @@ def main():
     p.add_argument("--no_depth_check", action="store_true", help="skip depth-consistency check (allows occluded)")
     args = p.parse_args()
 
-    mask_feats = torch.load(os.path.join(args.scene_dir, "mask_feats.pt")).float()
+    mask_feats = torch.load(os.path.join(args.scene_dir, "mask_feats.pt"), map_location="cpu").float()
     mask_feats = torch.nn.functional.normalize(mask_feats, p=2, dim=-1).cpu().numpy()
     print(f"loaded {mask_feats.shape[0]} mask features (dim={mask_feats.shape[-1]})")
 
@@ -104,10 +105,8 @@ def main():
         print(f"  rank {r+1}: instance {i}  score {sim[i]:.4f}")
 
     K = load_intrinsics(os.path.join(args.data_dir, "intrinsic/intrinsic_depth.txt"))
-    color_files = sorted(glob.glob(os.path.join(args.data_dir, "color/*.jpg")), key=numeric_stem)
-    pose_files = sorted(glob.glob(os.path.join(args.data_dir, "pose/*.txt")), key=numeric_stem)
-    depth_files = sorted(glob.glob(os.path.join(args.data_dir, "depth/*.png")), key=numeric_stem)
-    assert len(color_files) == len(pose_files) == len(depth_files), "frame count mismatch"
+    triples = frame_triplets(args.data_dir)
+    color_files, depth_files, pose_files = map(list, zip(*triples))
     H, W = np.array(Image.open(depth_files[0])).shape[:2]
     print(f"frames: {len(color_files)}  image: {W}x{H}")
 
