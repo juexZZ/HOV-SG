@@ -26,8 +26,8 @@ class ScannetDataset(RGBDDataset):
         super(ScannetDataset, self).__init__(cfg)
         self.root_dir = cfg["root_dir"]
         self.transforms = cfg["transforms"]
-        self.rgb_intrinsics = self._load_rgb_intrinsics(self.root_dir + "intrinsic/intrinsic_color.txt")
-        self.depth_intrinsics = self._load_depth_intrinsics(self.root_dir + "intrinsic/intrinsic_depth.txt")
+        self.rgb_intrinsics = self._load_rgb_intrinsics(os.path.join(self.root_dir, "intrinsic/intrinsic_color.txt"))
+        self.depth_intrinsics = self._load_depth_intrinsics(os.path.join(self.root_dir, "intrinsic/intrinsic_depth.txt"))
         self.scale = 1000.0
         self.data_list = self._get_data_list()
         
@@ -63,12 +63,12 @@ class ScannetDataset(RGBDDataset):
         rgb_data_list = []
         depth_data_list = []
         pose_data_list = []
-        rgb_data_list = os.listdir(self.root_dir + "color")
-        rgb_data_list = [self.root_dir + "color/" + x for x in rgb_data_list]
-        depth_data_list = os.listdir(self.root_dir + "depth")
-        depth_data_list = [self.root_dir + "depth/" + x for x in depth_data_list]
-        pose_data_list = os.listdir(self.root_dir + "pose")
-        pose_data_list = [self.root_dir + "pose/" + x for x in pose_data_list]
+        color_dir = os.path.join(self.root_dir, "color")
+        depth_dir = os.path.join(self.root_dir, "depth")
+        pose_dir = os.path.join(self.root_dir, "pose")
+        rgb_data_list = [os.path.join(color_dir, x) for x in os.listdir(color_dir)]
+        depth_data_list = [os.path.join(depth_dir, x) for x in os.listdir(depth_dir)]
+        pose_data_list = [os.path.join(pose_dir, x) for x in os.listdir(pose_dir)]
         # sort the data list
         rgb_data_list.sort()
         depth_data_list.sort()
