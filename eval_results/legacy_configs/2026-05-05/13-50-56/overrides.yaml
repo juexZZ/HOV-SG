@@ -1,0 +1,6 @@
+- main.dataset=scannet
+- main.split=
+- main.scene_id=pantry1
+- main.dataset_path=/local_data/jz4725/Depth-Anything-3/metric_depth_results
+- main.save_path=/local_data/jz4725/HOV-SG/data/scene_graphs
+- pipeline.skip_frames=0

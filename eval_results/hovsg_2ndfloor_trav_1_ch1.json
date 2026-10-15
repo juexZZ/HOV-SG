@@ -1,0 +1,711 @@
+{
+  "dataset_name": "2ndfloor_trav_1",
+  "chapter_id": 1,
+  "object_list": [
+    "tissue box",
+    "white bottle",
+    "grey bottle",
+    "coat",
+    "shopping bag",
+    "backpack",
+    "pen",
+    "blue marker",
+    "boots",
+    "grey pillow",
+    "plant",
+    "yellow cube",
+    "crackers",
+    "headphone",
+    "tomato",
+    "coffee cup",
+    "book",
+    "backpack",
+    "carrot",
+    "pumpkin",
+    "remote",
+    "grey cap",
+    "gloves",
+    "paper towel roll",
+    "scissors",
+    "red soda can",
+    "green cube"
+  ],
+  "retrieval_results": {
+    "tissue box": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 251,
+          "similarity": 0.30606943368911743,
+          "score": 0.30606943368911743,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569717284654000.png",
+          "frame_index": 173,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569717284654000.png",
+              "frame_index": 173,
+              "visible_points": 70
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "white bottle": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 226,
+          "similarity": 0.33752864599227905,
+          "score": 0.33752864599227905,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569735285450000.png",
+          "frame_index": 204,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569735285450000.png",
+              "frame_index": 204,
+              "visible_points": 34
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "grey bottle": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 167,
+          "similarity": 0.3019115924835205,
+          "score": 0.3019115924835205,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569715784576000.png",
+          "frame_index": 170,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569715784576000.png",
+              "frame_index": 170,
+              "visible_points": 78
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "coat": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 636,
+          "similarity": 0.3067001700401306,
+          "score": 0.3067001700401306,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569667782296000.png",
+          "frame_index": 125,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569667782296000.png",
+              "frame_index": 125,
+              "visible_points": 121
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "shopping bag": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 32,
+          "similarity": 0.27395063638687134,
+          "score": 0.27395063638687134,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569680783015000.png",
+          "frame_index": 137,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569680783015000.png",
+              "frame_index": 137,
+              "visible_points": 109
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "backpack": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 431,
+          "similarity": 0.32406294345855713,
+          "score": 0.32406294345855713,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569750786176000.png",
+          "frame_index": 215,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569750786176000.png",
+              "frame_index": 215,
+              "visible_points": 257
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "pen": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 721,
+          "similarity": 0.2816702425479889,
+          "score": 0.2816702425479889,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569655281806000.png",
+          "frame_index": 117,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569655281806000.png",
+              "frame_index": 117,
+              "visible_points": 24
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "blue marker": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 254,
+          "similarity": 0.29461929202079773,
+          "score": 0.29461929202079773,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569723785021000.png",
+          "frame_index": 186,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569723785021000.png",
+              "frame_index": 186,
+              "visible_points": 128
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "boots": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 394,
+          "similarity": 0.31508028507232666,
+          "score": 0.31508028507232666,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569734785508000.png",
+          "frame_index": 203,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569734785508000.png",
+              "frame_index": 203,
+              "visible_points": 20
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "grey pillow": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 256,
+          "similarity": 0.36727792024612427,
+          "score": 0.36727792024612427,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569723785021000.png",
+          "frame_index": 186,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569723785021000.png",
+              "frame_index": 186,
+              "visible_points": 116
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "plant": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 163,
+          "similarity": 0.37361395359039307,
+          "score": 0.37361395359039307,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569723785021000.png",
+          "frame_index": 186,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569723785021000.png",
+              "frame_index": 186,
+              "visible_points": 279
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "yellow cube": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 251,
+          "similarity": 0.3660063147544861,
+          "score": 0.3660063147544861,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569717284654000.png",
+          "frame_index": 173,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569717284654000.png",
+              "frame_index": 173,
+              "visible_points": 70
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "crackers": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 255,
+          "similarity": 0.3306029438972473,
+          "score": 0.3306029438972473,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569717284654000.png",
+          "frame_index": 173,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569717284654000.png",
+              "frame_index": 173,
+              "visible_points": 52
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "headphone": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 476,
+          "similarity": 0.3479730188846588,
+          "score": 0.3479730188846588,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569780787543000.png",
+          "frame_index": 234,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569780787543000.png",
+              "frame_index": 234,
+              "visible_points": 34
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "tomato": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 251,
+          "similarity": 0.2860616445541382,
+          "score": 0.2860616445541382,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569717284654000.png",
+          "frame_index": 173,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569717284654000.png",
+              "frame_index": 173,
+              "visible_points": 70
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "coffee cup": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 480,
+          "similarity": 0.34866249561309814,
+          "score": 0.34866249561309814,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569779287475000.png",
+          "frame_index": 233,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569779287475000.png",
+              "frame_index": 233,
+              "visible_points": 29
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "book": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 611,
+          "similarity": 0.2650604248046875,
+          "score": 0.2650604248046875,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569680783015000.png",
+          "frame_index": 137,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569680783015000.png",
+              "frame_index": 137,
+              "visible_points": 39
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "carrot": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 77,
+          "similarity": 0.30767831206321716,
+          "score": 0.30767831206321716,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569669782388000.png",
+          "frame_index": 127,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569669782388000.png",
+              "frame_index": 127,
+              "visible_points": 291
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "pumpkin": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 83,
+          "similarity": 0.3413872718811035,
+          "score": 0.3413872718811035,
+          "score_type": "cosine_similarity",
+          "frame_name": null,
+          "frame_index": null,
+          "contributor_frames": []
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "remote": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 226,
+          "similarity": 0.2837134599685669,
+          "score": 0.2837134599685669,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569735285450000.png",
+          "frame_index": 204,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569735285450000.png",
+              "frame_index": 204,
+              "visible_points": 34
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "grey cap": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 120,
+          "similarity": 0.31762373447418213,
+          "score": 0.31762373447418213,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569726285068000.png",
+          "frame_index": 191,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569726285068000.png",
+              "frame_index": 191,
+              "visible_points": 88
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "gloves": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 611,
+          "similarity": 0.24170295894145966,
+          "score": 0.24170295894145966,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569680783015000.png",
+          "frame_index": 137,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569680783015000.png",
+              "frame_index": 137,
+              "visible_points": 39
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "paper towel roll": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 226,
+          "similarity": 0.32498687505722046,
+          "score": 0.32498687505722046,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569735285450000.png",
+          "frame_index": 204,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569735285450000.png",
+              "frame_index": 204,
+              "visible_points": 34
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "scissors": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 395,
+          "similarity": 0.2660989761352539,
+          "score": 0.2660989761352539,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569739785705000.png",
+          "frame_index": 206,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569739785705000.png",
+              "frame_index": 206,
+              "visible_points": 23
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "red soda can": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 494,
+          "similarity": 0.25996339321136475,
+          "score": 0.25996339321136475,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569786287792000.png",
+          "frame_index": 243,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569786287792000.png",
+              "frame_index": 243,
+              "visible_points": 100
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "green cube": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 251,
+          "similarity": 0.3067137598991394,
+          "score": 0.3067137598991394,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569717284654000.png",
+          "frame_index": 173,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569717284654000.png",
+              "frame_index": 173,
+              "visible_points": 70
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    }
+  },
+  "hit_rate_any_contributor": 0.2962962962962963,
+  "hit_rate(TP)": 0.2962962962962963,
+  "miss_rate(FN)": 0.48148148148148145,
+  "hit_rate_primary": 0.2962962962962963,
+  "miss_rate_primary(FN)": 0.48148148148148145,
+  "hit@1": 0.2962962962962963,
+  "ghost_rate(FP)": 0.2222222222222222,
+  "True_Negative(TN)": 0.0,
+  "In chapter hit (any contributor)": 0.38095238095238093,
+  "In chapter miss (any contributor)": 0.6190476190476191,
+  "In chapter hit (primary only)": 0.38095238095238093,
+  "In chapter miss (primary only)": 0.6190476190476191,
+  "recall": 0.38095238095056694,
+  "precision": 0.5714285714244898,
+  "f1_score": 0.45714285709224495,
+  "meta": {
+    "similarity_threshold": -1.0,
+    "ignore_similarity_threshold_for_hits": true,
+    "contributor_top_t": 1,
+    "tp_fn_criterion": "any_contributor_in_gt",
+    "primary_metric_alias_hit@1": "hit_rate_primary",
+    "n_gt_objects_in_chapter_annotation": 20,
+    "n_evaluated_positive_queries": 21,
+    "in_chapter_rates_denominator": "object_list queries with GT in this chapter",
+    "scene_dir": "/local_data/jz4725/HOV-SG/data/scene_graphs/scannet/2ndfloor_trav_1",
+    "data_dir": "/local_data/jz4725/Depth-Anything-3/metric_depth_results/2ndfloor_trav_1",
+    "clip_type": "ViT-H-14",
+    "score_type": "cosine_similarity",
+    "vox_size": 0.05,
+    "min_visible": 20,
+    "depth_tol": 0.5
+  }
+}

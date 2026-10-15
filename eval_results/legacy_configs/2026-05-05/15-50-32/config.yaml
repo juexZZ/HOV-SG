@@ -1,0 +1,43 @@
+main:
+  device: cuda
+  dataset: scannet
+  scene_id: pantry2
+  split: ''
+  package_path: /home/SOME_USERNAME/HOV-SG/hovsg/
+  dataset_path: /local_data/jz4725/Depth-Anything-3/metric_depth_results
+  raw_data_path: /data/hovsg/hm3dsem/data/versioned_data/hm3d-0.2/hm3d
+  save_path: /local_data/jz4725/HOV-SG/data/scene_graphs
+dataset:
+  hm3dsem:
+    gt_skip_frames: 2
+models:
+  clip:
+    type: ViT-H-14
+    checkpoint: checkpoints/laion2b_s32b_b79k.bin
+  sam:
+    checkpoint: checkpoints/sam_vit_h_4b8939.pth
+    type: vit_h
+    points_per_side: 12
+    pred_iou_thresh: 0.88
+    points_per_batch: 144
+    crop_n_layers: 0
+    stability_score_thresh: 0.95
+    min_mask_region_area: 100
+pipeline:
+  create_graph: true
+  voxel_size: 0.02
+  skip_frames: 1
+  init_overlap_thresh: 0.75
+  overlap_thresh_factor: 0.025
+  iou_thresh: 0.05
+  clip_masked_weight: 0.4418
+  clip_bbox_margin: 50
+  feature_dbscan_eps: 0.01
+  max_mask_distance: 10000
+  min_pcd_points: 100
+  depth_weighting: false
+  grid_resolution: 0.05
+  merge_type: sequential
+  save_intermediate_results: false
+  obj_labels: HM3DSEM_LABELS
+  merge_objects_graph: false

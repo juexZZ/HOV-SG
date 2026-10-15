@@ -1,0 +1,196 @@
+{
+  "dataset_name": "pantry2",
+  "chapter_id": 2,
+  "object_list": [
+    "white bottle",
+    "shopping bag",
+    "tomato",
+    "carrot",
+    "remote",
+    "green cube"
+  ],
+  "retrieval_results": {
+    "white bottle": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 121,
+          "similarity": 0.3411082923412323,
+          "score": 0.3411082923412323,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1777943719494286000.png",
+          "frame_index": 19,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1777943719494286000.png",
+              "frame_index": 19,
+              "visible_points": 27
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "shopping bag": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 158,
+          "similarity": 0.3099370002746582,
+          "score": 0.3099370002746582,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1777943695195928000.png",
+          "frame_index": 14,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1777943695195928000.png",
+              "frame_index": 14,
+              "visible_points": 29
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "tomato": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 65,
+          "similarity": 0.28082942962646484,
+          "score": 0.28082942962646484,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1777943708395082000.png",
+          "frame_index": 17,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1777943708395082000.png",
+              "frame_index": 17,
+              "visible_points": 27
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "carrot": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 65,
+          "similarity": 0.28116917610168457,
+          "score": 0.28116917610168457,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1777943708395082000.png",
+          "frame_index": 17,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1777943708395082000.png",
+              "frame_index": 17,
+              "visible_points": 27
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "remote": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 22,
+          "similarity": 0.2858065962791443,
+          "score": 0.2858065962791443,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1777943719494286000.png",
+          "frame_index": 19,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1777943719494286000.png",
+              "frame_index": 19,
+              "visible_points": 45
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "green cube": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 62,
+          "similarity": 0.35378071665763855,
+          "score": 0.35378071665763855,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1777943695195928000.png",
+          "frame_index": 14,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1777943695195928000.png",
+              "frame_index": 14,
+              "visible_points": 38
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    }
+  },
+  "hit_rate_any_contributor": 0.0,
+  "hit_rate(TP)": 0.0,
+  "miss_rate(FN)": 0.0,
+  "hit_rate_primary": 0.0,
+  "miss_rate_primary(FN)": 0.0,
+  "hit@1": 0.0,
+  "ghost_rate(FP)": 1.0,
+  "True_Negative(TN)": 0.0,
+  "In chapter hit (any contributor)": 0.0,
+  "In chapter miss (any contributor)": 0.0,
+  "In chapter hit (primary only)": 0.0,
+  "In chapter miss (primary only)": 0.0,
+  "recall": 0.0,
+  "precision": 0.0,
+  "f1_score": 0.0,
+  "meta": {
+    "similarity_threshold": -1.0,
+    "ignore_similarity_threshold_for_hits": true,
+    "contributor_top_t": 1,
+    "tp_fn_criterion": "any_contributor_in_gt",
+    "primary_metric_alias_hit@1": "hit_rate_primary",
+    "n_gt_objects_in_chapter_annotation": 0,
+    "n_evaluated_positive_queries": 0,
+    "in_chapter_rates_denominator": "object_list queries with GT in this chapter",
+    "scene_dir": "/local_data/jz4725/HOV-SG/data/scene_graphs/scannet/pantry2",
+    "data_dir": "/local_data/jz4725/Depth-Anything-3/metric_depth_results/pantry2",
+    "clip_type": "ViT-H-14",
+    "score_type": "cosine_similarity",
+    "vox_size": 0.05,
+    "min_visible": 20,
+    "depth_tol": 0.5
+  }
+}
