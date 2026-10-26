@@ -511,7 +511,8 @@ def compute_3d_bbox_iou(bbox1, bbox2, padding=0):
     return iou
 
 
-def merge_3d_masks(mask_list, overlap_threshold=0.5, radius=0.02, iou_thresh=0.05):
+def merge_3d_masks(mask_list, overlap_threshold=0.5, radius=0.02, iou_thresh=0.05,
+                   return_components=False):
     """
     merge the overlapped 3D masks in the list of masks using matrix
     :param pcd_list (list): list of point clouds
@@ -532,7 +533,7 @@ def merge_3d_masks(mask_list, overlap_threshold=0.5, radius=0.02, iou_thresh=0.0
 
     # check if overlap_matrix is zero size
     if overlap_matrix.size == 0:
-        return mask_list
+        return (mask_list, []) if return_components else mask_list
     graph = overlap_matrix > overlap_threshold
     n_components, component_labels = connected_components(graph)
     component_indices = [np.where(component_labels == i)[0] for i in range(n_components)]
@@ -541,6 +542,10 @@ def merge_3d_masks(mask_list, overlap_threshold=0.5, radius=0.02, iou_thresh=0.0
     for indices in component_indices:
         pcd_list_merged.append(merge_point_clouds_list([mask_list[i] for i in indices], voxel_size=0.5 * radius))
 
+    # Optional provenance only: connected components and numerical operations
+    # above are unchanged. Existing callers retain the original return value.
+    if return_components:
+        return pcd_list_merged, component_indices
     return pcd_list_merged
 
 
@@ -621,4 +626,3 @@ def seq_merge(frames_pcd, th, down_size, proxy_th):
         global_masks, overlap_threshold=th, radius=down_size, iou_thresh=proxy_th
     )
     return global_masks
-
